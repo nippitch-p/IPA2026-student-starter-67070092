@@ -1,0 +1,10 @@
+desired:
+  name: Loopback123
+  ipv4: 172.23.123.99/32
+  description: NEW-DESC-67070092
+  admin_state: down
+current:
+  name: Loopback123
+  ipv4: 172.23.123.1/32
+  description: OLD-DESC
+  admin_state: up

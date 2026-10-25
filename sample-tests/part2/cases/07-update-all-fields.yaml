@@ -1,0 +1,15 @@
+fixture: 07-update-all-fields.yaml
+expected:
+  status: ok
+  result: planned
+  operation: update
+  changes:
+    ipv4:
+      from: 172.23.123.1/32
+      to: 172.23.123.99/32
+    description:
+      from: OLD-DESC
+      to: NEW-DESC-67070092
+    admin_state:
+      from: up
+      to: down

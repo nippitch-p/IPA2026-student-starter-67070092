@@ -2,6 +2,8 @@
 
 ## เป้าหมายของงาน
 
+รหัสนักศึกษา 67070092
+
 สร้าง Webex bot ที่รับการ @mention พร้อมไฟล์ YAML **หนึ่งไฟล์ในข้อความเดียวกัน** ตรวจคำขอ ทำงานกับ router และตอบผลเป็น JSON **ในห้องที่ได้รับข้อความ** โปรแกรมต้องรองรับ `status`, `plan`, `apply`, `delete` ตาม backend ที่กำหนด
 
 Starter นี้ยังไม่มีคำตอบ จุด `TODO` เป็นคอมเมนต์บอกงาน, `pass` เป็นโค้ดว่าง และ `raise NotImplementedError` ทำให้ฟังก์ชันหยุดเมื่อถูกเรียก **ให้เขียนฟังก์ชันเหล่านี้ใน `app/`** ตามข้อกำหนดใน `specs/` ซึ่งอยู่ใน repo เดียวกัน
@@ -69,7 +71,7 @@ sequenceDiagram
 
 YAML หนึ่งไฟล์คือ **หนึ่งคำขอที่สมบูรณ์ในตัวเอง** มี `version`, `router`, `method`, `action` และ `desired.interface` โปรแกรมต้องอ่านไฟล์ ตรวจรูปแบบและตรวจว่า backend รองรับ action นั้น ก่อนทำงานกับ router
 
-ตัวอย่างด้านล่างใช้ placeholder ที่ **ต้องแก้ก่อนแนบส่งจริง**: `<assigned-router-ip>` คือ router ที่ได้รับมอบหมายในช่วง `10.0.29.102`–`10.0.29.105`, `<student-id>` คือรหัสนักศึกษาของตน และ `<unused-ipv4>` คือ IPv4 ที่เลือกใช้กับ Loopback ของตนและยังไม่ซ้ำบน router นั้น โดยคง `/32` ไว้ คำขอ `plan` และ `apply` ต้องมี `ipv4`, `description`, `admin_state` ครบตาม spec
+ตัวอย่างด้านล่างใช้ placeholder ที่ **ต้องแก้ก่อนแนบส่งจริง**: `<assigned-router-ip>` คือ router ที่ได้รับมอบหมายในช่วง `10.0.29.102`–`10.0.29.105`, `<student-id>` คือรหัสนักศึกษาของตน username คือ admin รหัสคือ cisco และ `<unused-ipv4>` คือ IPv4 ที่เลือกใช้กับ Loopback  ของตนและยังไม่ซ้ำบน router นั้น โดยคง `/32` ไว้ คำขอ `plan` และ `apply` ต้องมี `ipv4`, `description`, `admin_state` ครบตาม spec
 
 ```yaml
 version: 1
