@@ -29,14 +29,27 @@ def get_interface_state(
                 "timeout": 10,
             }
             with ConnectHandler(**device) as net_connect:
-                ip_info = net_connect.send_command(
-                    f"show ip interface {interface_name}",
-                    use_textfsm=True,
-                )
-                descriptions = net_connect.send_command(
-                    "show interfaces description",
-                    use_textfsm=True,
-                )
+                try:
+                    ip_info = net_connect.send_command(
+                        f"show ip interface {interface_name}",
+                        use_textfsm=True,
+                    )
+                except Exception:
+                    ip_info = []
+
+                if isinstance(ip_info, str):
+                    ip_info = []
+
+                try:
+                    descriptions = net_connect.send_command(
+                        "show interfaces description",
+                        use_textfsm=True,
+                    )
+                except Exception:
+                    descriptions = []
+
+                if isinstance(descriptions, str):
+                    descriptions = []
     except PermissionError:
         return {"status": "error", "result": "authentication_failed"}
     except ConnectionError:
