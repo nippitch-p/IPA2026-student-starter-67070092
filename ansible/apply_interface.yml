@@ -1,5 +1,4 @@
 ---
-# TODO: implement the Ansible apply playbook for Part 3.
 - name: Apply Desired Loopback Configuration
   hosts: routers
   gather_facts: false
@@ -9,6 +8,6 @@
         lines:
           - description {{ description }}
           - ip address {{ ipv4_address }} {{ netmask }}
-          - "{{ 'shutdown' if shutdown else 'no shutdown' }}"
+          - "{{ 'shutdown' if (shutdown | bool) else 'no shutdown' }}"
         parents: "interface {{ interface_name }}"
         defaults: true

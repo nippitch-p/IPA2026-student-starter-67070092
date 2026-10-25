@@ -2,6 +2,7 @@
 Part 3: Ansible Backend Adapter
 """
 import ipaddress
+import json
 import os
 import subprocess
 
@@ -32,14 +33,13 @@ def apply_interface(
         else:
             playbook_path = os.path.join("ansible", "apply_interface.yml")
             inventory_path = os.path.join("ansible", "inventory.ini")
-            extra_vars = " ".join([f"{k}='{v}'" for k, v in variables.items()])
             cmd = [
                 "ansible-playbook",
                 "-i",
                 inventory_path,
                 playbook_path,
                 "-e",
-                extra_vars,
+                json.dumps(variables),
             ]
             res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
             if res.returncode != 0:

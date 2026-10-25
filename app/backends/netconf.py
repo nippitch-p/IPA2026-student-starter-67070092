@@ -65,7 +65,7 @@ def get_interface_state(
         name = iface_el.findtext(f"{{{IETF_INTERFACES_NS}}}name")
         description = iface_el.findtext(f"{{{IETF_INTERFACES_NS}}}description")
         enabled_text = iface_el.findtext(f"{{{IETF_INTERFACES_NS}}}enabled")
-        admin_state = "up" if enabled_text == "true" else "down"
+        admin_state = "down" if enabled_text == "false" else "up"
 
         ip_el = iface_el.find(f".//{{{IETF_IP_NS}}}address/{{{IETF_IP_NS}}}ip")
         mask_el = iface_el.find(f".//{{{IETF_IP_NS}}}address/{{{IETF_IP_NS}}}netmask")
